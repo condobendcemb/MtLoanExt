@@ -105,8 +105,5 @@ namespace MtLoanExt.clsObject
 
             return clsSqlHelper.ExecuteDataset(clsSqlHelper.strConnAdventureWorks2022, CommandType.StoredProcedure, strSQL, p);
         }
-
-
-
     }
 }

@@ -100,8 +100,12 @@ namespace MtLoanExt
             {
                 string menuName = row["MenuName"].ToString();
                 string menuUrl = row["MenuUrl"].ToString();
-                string iconClass = row["MenuIconClass"].ToString();
+
+                //string iconClass = row["MenuIconClass"].ToString();
+                string iconClass = row["IconClass"].ToString();
+
                 int menuID = Convert.ToInt32(row["MenuId"]);
+
                 //int MenuParentId = Convert.ToInt32(row["MenuParentId"]);
 
                 if ((IsActiveMenu(menuUrl, menuID)))
@@ -126,7 +130,6 @@ namespace MtLoanExt
                     menuHtml.AppendLine($"<i class=\"{iconClass}\"></i> <p>{menuName}</p>");
                 }
                 
-
                     menuHtml.AppendLine("</a>");
 
                 // Recursive call for child menus
@@ -180,11 +183,6 @@ namespace MtLoanExt
             string menuHtml = GenerateMenuFromDataTable(dtMenu);
             phdMenu.Controls.Add(new LiteralControl(menuHtml));
         }
-
-
-        
-
-
 
     }
 }

@@ -1,0 +1,87 @@
+﻿1. เก็บจำนวนหน้าของรายงาน
+RDLC ไม่มี API โดยตรงสำหรับการดึงจำนวนหน้า แต่คุณสามารถคำนวณจำนวนหน้าของรายงานได้หลังจากการประมวลผล ด้วยการใช้ LocalReport หรือ ReportViewer ใน .NET
+
+ตัวอย่างใน C#:
+
+csharp
+Copy code
+// ตัวอย่างการดึงจำนวนหน้า
+var localReport = new LocalReport();
+localReport.ReportPath = "PathToYourReport.rdlc";
+
+// กำหนดค่า Parameters และ DataSource ของรายงาน
+localReport.SetParameters(parameters);
+localReport.DataSources.Add(new ReportDataSource("YourDataSource", yourData));
+
+// เรนเดอร์รายงานเป็น PDF
+string mimeType, encoding, fileNameExtension;
+Warning[] warnings;
+string[] streamIds;
+byte[] renderedBytes;
+
+renderedBytes = localReport.Render(
+    "PDF", null, out mimeType, out encoding, out fileNameExtension, 
+    out streamIds, out warnings
+);
+
+// เก็บจำนวนหน้าจาก Stream
+int totalPages = warnings.FirstOrDefault(w => w.Code == "PageCount")?.Message ?? 1;
+Console.WriteLine($"Total Pages: {totalPages}");
+..........................................................................................
+2. ตั้งค่าหน้าเริ่มต้นสำหรับรายงานใหม่
+RDLC ไม่สามารถตั้งค่าหน้าเริ่มต้นโดยตรงได้ในตัวของมันเอง คุณต้องใช้ Custom Parameters หรือ การรวมรายงาน เพื่อจัดการกับปัญหานี้
+
+วิธีที่ 1: ส่งค่า StartPageNumber ผ่าน Report Parameter
+เพิ่ม Parameter ใน RDLC:
+
+เปิดไฟล์ .rdlc ใน Visual Studio
+เพิ่ม Report Parameter ชื่อ StartPageNumber (ค่าเริ่มต้น 1)
+แก้ไขฟิลด์ที่แสดงหมายเลขหน้า: ใช้ Expression เช่น:
+
+text
+Copy code
+="Page " & (Globals!PageNumber + Parameters!StartPageNumber.Value - 1)
+ส่งค่า Parameter จากโปรแกรม: ตัวอย่างใน C#:
+
+csharp
+Copy code
+var parameters = new ReportParameter[]
+{
+    new ReportParameter("StartPageNumber", startPageNumber.ToString())
+};
+localReport.SetParameters(parameters);
+
+วิธีที่ 2: รวมรายงานหลายฉบับ (Report Merging)
+หากต้องการรวมรายงานและกำหนดหน้าเริ่มต้น:
+
+เรนเดอร์รายงานแต่ละส่วนเป็น PDF.
+ใช้ PDF Library (เช่น PdfSharp หรือ iTextSharp) เพื่อรวมรายงานและคำนวณหมายเลขหน้า.
+ตัวอย่างใน C#:
+
+csharp
+Copy code
+using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
+
+PdfDocument combinedDocument = new PdfDocument();
+
+// เพิ่มรายงานแรก
+PdfDocument report1 = PdfReader.Open("Report1.pdf", PdfDocumentOpenMode.Import);
+foreach (PdfPage page in report1.Pages)
+    combinedDocument.AddPage(page);
+
+// เพิ่มรายงานสองพร้อมหน้าต่อ
+PdfDocument report2 = PdfReader.Open("Report2.pdf", PdfDocumentOpenMode.Import);
+foreach (PdfPage page in report2.Pages)
+    combinedDocument.AddPage(page);
+
+combinedDocument.Save("CombinedReport.pdf");
+................................................................................
+3. Workflow โดยรวม
+ขั้นที่ 1: สร้างและเรนเดอร์รายงานแรก (ดึงจำนวนหน้า).
+ขั้นที่ 2: ใช้จำนวนหน้าเป็น StartPageNumber สำหรับรายงานถัดไป.
+ขั้นที่ 3: เรนเดอร์รายงานถัดไปและรวมผลลัพธ์.
+เครื่องมือเพิ่มเติม:
+PdfSharp: สำหรับจัดการไฟล์ PDF.
+Microsoft Report Viewer: ใช้ควบคุมการแสดงผล RDLC และเรนเดอร์รายงาน.
+iTextSharp: สำหรับการรวมและจัดการ PDF ระดับสูง.

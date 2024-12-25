@@ -418,7 +418,8 @@
     <Content Include="PageReport\Report1.aspx" />
     <Content Include="PageReport\Report2.aspx" />
     <Content Include="PageReport\Report3.aspx" />
-    <Content Include="PageSetting\Setting.aspx" />
+    <Content Include="PageSetting\SettingIcon.aspx" />
+    <Content Include="PageSetting\SettingUser.aspx" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
     <Content Include="plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
@@ -2386,12 +2387,19 @@
     <Compile Include="PageReport\Report3.aspx.designer.cs">
       <DependentUpon>Report3.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PageSetting\Setting.aspx.cs">
-      <DependentUpon>Setting.aspx</DependentUpon>
+    <Compile Include="PageSetting\SettingIcon.aspx.cs">
+      <DependentUpon>SettingIcon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PageSetting\Setting.aspx.designer.cs">
-      <DependentUpon>Setting.aspx</DependentUpon>
+    <Compile Include="PageSetting\SettingIcon.aspx.designer.cs">
+      <DependentUpon>SettingIcon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSetting\SettingUser.aspx.cs">
+      <DependentUpon>SettingUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSetting\SettingUser.aspx.designer.cs">
+      <DependentUpon>SettingUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
