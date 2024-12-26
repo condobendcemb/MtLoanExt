@@ -58,21 +58,21 @@ namespace MtLoanExt.PageSetting
             //clsCommon.ShowMessageBox(this, this.GetType(), "lbtSearch_Click");
         }
 
-        private bool SearchIsValid()
-        {
-            if (txtDateFrom.Text == "")
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ไม่สามารถทำรายการได้ กรุณาระบุข้อมูล !!!')", true);
-                return false;
-            }
-            if (txtDateTo.Text == "")
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ไม่สามารถทำรายการได้ กรุณาระบุข้อมูล !!!')", true);
-                return false;
-            }
+        //private bool SearchIsValid()
+        //{
+        //    if (txtDateFrom.Text == "")
+        //    {
+        //        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ไม่สามารถทำรายการได้ กรุณาระบุข้อมูล !!!')", true);
+        //        return false;
+        //    }
+        //    if (txtDateTo.Text == "")
+        //    {
+        //        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ไม่สามารถทำรายการได้ กรุณาระบุข้อมูล !!!')", true);
+        //        return false;
+        //    }
 
-            return true;
-        }
+        //    return true;
+        //}
 
 
         private void BindDataToControl()
