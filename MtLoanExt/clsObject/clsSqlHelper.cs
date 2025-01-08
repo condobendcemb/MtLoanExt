@@ -49,6 +49,10 @@ namespace MtLoanExt.clsObject
             get { return ConfigurationManager.ConnectionStrings["strConnAdventureWorks2022"].ToString(); }
         }
 
+        public static string strConnBpp
+        {
+            get { return ConfigurationManager.ConnectionStrings["strConnBpp"].ToString(); }
+        }
 
         #region private utility methods & constructors
 

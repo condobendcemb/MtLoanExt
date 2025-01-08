@@ -82,5 +82,24 @@ namespace MtLoanExt.clsObject
             return clsSqlHelper.ExecuteDataset(clsSqlHelper.strConnAdventureWorks2022, CommandType.StoredProcedure, strSQL, p);
         }
 
+        public static DataSet Asset(string location, string subloc)
+        {
+            // @location NVARCHAR(MAX)
+            //,@subloc NVARCHAR(MAX)
+
+            string strSQL = "";
+            strSQL = "AssetSelect";
+
+            SqlParameter[] p = new SqlParameter[2];
+
+            p[0] = new SqlParameter("@location", SqlDbType.NVarChar);
+            p[0].Value = clsCommon.ToDBNull(location);
+            p[1] = new SqlParameter("@subloc", SqlDbType.NVarChar);
+            p[1].Value = clsCommon.ToDBNull(subloc);
+           
+
+            return clsSqlHelper.ExecuteDataset(clsSqlHelper.strConnBpp, CommandType.StoredProcedure, strSQL, p);
+        }
+
     }
 }

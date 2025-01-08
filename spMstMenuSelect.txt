@@ -1,0 +1,70 @@
+USE [AdventureWorks2022]
+GO
+/****** Object:  StoredProcedure [dbo].[MstMenuSelect]    Script Date: 8/1/2025 14:50:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- 20241219,	Nipon,	Create Script
+-- =============================================
+ALTER PROCEDURE [dbo].[MstMenuSelect](
+ @ApplicationId INT 
+,@MenuId		INT
+,@ActiveFlag	NVARCHAR(1)
+)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+	--SELECT 
+	-- ApplicationId
+	--,MenuId
+	--,MenuName
+	--,MenuUrl
+	--,MenuIconClass
+	--,MenuParentId
+	--,MenuSeq
+	--,CreateDate
+	--,CreateBy
+	--,UpdateDate
+	--,UpdateBy
+	--,ActiveFlag
+	--FROM [dbo].[MstMenu]
+	--WHERE 1=1
+	--AND ( ISNULL(@ApplicationId,0)	= 0		OR ApplicationId	= @ApplicationId )
+	--AND ( ISNULL(@MenuId,0)			= 0		OR MenuId			= @MenuId )
+	--AND ( ISNULL(@ActiveFlag,'')	= ''	OR ActiveFlag		= @ActiveFlag )
+
+	--ORDER BY ApplicationId,MenuSeq
+
+	SELECT 
+	 A.ApplicationId
+	,A.MenuId
+	,A.MenuName
+	,A.MenuUrl
+	--,A.IconId
+	,A.MenuIconClass
+	,A.MenuParentId
+	,A.MenuSeq
+	,A.CreateDate
+	,A.CreateBy
+	,A.UpdateDate
+	,A.UpdateBy
+	,A.ActiveFlag
+	,B.[IconId]
+    ,B.[IconClass]
+    ,B.[IconDescription]
+	FROM [dbo].[MstMenu] A
+	LEFT JOIN [dbo].[IconMaster] B
+	ON A.IconId = B.IconId
+	WHERE 1=1
+	AND ( ISNULL(@ApplicationId,0)	= 0		OR ApplicationId	= @ApplicationId )
+	AND ( ISNULL(@MenuId,0)			= 0		OR MenuId			= @MenuId )
+	AND ( ISNULL(@ActiveFlag,'')	= ''	OR ActiveFlag		= @ActiveFlag )
+
+	ORDER BY ApplicationId,MenuSeq
+
+END
