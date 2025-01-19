@@ -39,13 +39,31 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                        ddddddddddddddddd
+ddd
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+             <!-- Main content -->
+ <div class="content">
+     <div class="container-fluid">
+         <div class="row">
+             <div class="col-lg-12">
+                 <div class="card">
+                     <div class="card-body">
+
+             <asp:GridView ID="grv1" runat="server" AutoGenerateColumns="true">
+
+             </asp:GridView>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
 
         </ContentTemplate>
     </asp:UpdatePanel>

@@ -43,5 +43,10 @@ namespace MtLoanExt.PageSetting
 
             //clsCommon.ShowMessageBox(this, this.GetType(), "lbtSearch_Click");
         }
+
+        private void BibdGridview()
+        {
+            
+        }
     }
 }

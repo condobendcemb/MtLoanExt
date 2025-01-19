@@ -147,7 +147,7 @@
                                     </div>
                                 </div>
 
-                              <%--  <div class="col-sm-2">
+                                <%--  <div class="col-sm-2">
                                     <div class="form-group">
                                         <label>CreateDate</label>
                                         <asp:TextBox ID="txtCreateDate" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
@@ -182,7 +182,7 @@
                                     </div>
                                 </div>--%>
 
-                              <%--  <div class="col-sm-2">
+                                <%--  <div class="col-sm-2">
                                     <div class="form-group">
                                         <label>PUserId</label>
                                         <asp:TextBox ID="txtPUserId" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
@@ -203,7 +203,7 @@
                                     </div>
                                 </div>
 
-                               <%-- <div class="col-sm-2">
+                                <%-- <div class="col-sm-2">
                                     <div class="form-group">
                                         <label>PCreateDate</label>
                                         <asp:TextBox ID="txtPCreateDate" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>

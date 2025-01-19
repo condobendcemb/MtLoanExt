@@ -36,7 +36,7 @@ namespace MtLoanExt.PageSetting
                     //Search();
                     //Search();
                     BindDataToControl();
-                    dtList = clsData.UserSelect().Tables[0];
+                    
                 }
                 else
                 {

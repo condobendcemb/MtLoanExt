@@ -39,8 +39,10 @@ namespace MtLoanExt
         {
             txtUserPassword.Attributes["type"] = "password";
 
-            txtUserName.Text = "";
-            txtUserPassword.Text = "";
+            //txtUserName.Text = "";
+            //txtUserPassword.Text = "";
+            txtUserName.Text = "mtadm";
+            txtUserPassword.Text = "mtadm";
 
             this.form1.DefaultButton = this.lbtSubmit.UniqueID;
         }
